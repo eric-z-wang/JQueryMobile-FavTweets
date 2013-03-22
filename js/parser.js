@@ -1,3 +1,23 @@
+
+
+/** 
+Globals
+**/
+var JSON_PATH='jsons/favs.json';
+var favourites_json;
+
+/*
+Get the local json file to store into cached mem.
+*/
+function preload_faves() {
+    console.log('Loading Faves Json');
+    $.getJSON(JSON_PATH, function(data) {
+        favourites_json=data;
+        tweet_summary_markup(favourites_json);
+    });
+}
+
+
 /*
 This guy is the guy that sorts the fave tweets json
 according to the specified sorters.

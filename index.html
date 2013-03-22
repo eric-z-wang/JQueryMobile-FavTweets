@@ -4,16 +4,43 @@
 <script src="js/jquery.mobile-1.3.0.min.js"></script>
 <script src="js/generator.js"></script>
 <script src="js/parser.js"></script>
+<script src="js/main.js"></script>
 <link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css"></link>
 <link rel="stylesheet" href="css/style.css"></link>
 </head>
 <body>
-    <div data-role="page" id="listview">
-       
-
+    <div data-role="page" id="listpage" data-theme="d">
+        <div data-role="header" data-theme="d">
+            <div data-role="controlgroup" data-type="horizontal">
+            <a href="#hash" data-role="button" data-icon="" data-inline="true">#</a>
+            <a href="#at" data-role="button" data-inline="true">@</a>
+            <a href="#loc" data-role="button" data-inline="true">&</a>
+            <a href="#date" data-role="button" data-inline="true">*</a>
+            <a id="loadfavesbutton" data-role="button" data-inline="true">LOAD</a>
+            </div>
+        </div>
+        <div data-role="content">
+            <ul id="listfaves" data-role="listview" data-inset="true">
+                <!-- dynamically-generated list items -->
+            </div>
+            <a href="#tweetview" data-role="button">forward</div>
+        </div>
+        <!--<div data-role="footer"></div>-->        
     </div>
 
     <div data-role="page" id="tweetview">
+        <div data-role="header"></div>
+        <div data-role="content">
+            <a href="#listview" data-role="button">back</div>
+        </div>
+        <!--<div data-role="footer"></div>-->        
+    </div>
+
+    <div data-role="page" id="hash">
+
+        <div data-role="content">
+            <a href="#listview" data-role="button">back</div>
+        </div>
 
     </div>
 </body>
