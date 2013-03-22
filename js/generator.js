@@ -8,6 +8,7 @@ Output: HTML markup, dummy!
 */
 function tweet_summary_markup(json) {
     list_root=$('#listfaves');
+    list_root.empty();
     
     // Make markup for each json in the thinga:    
     $.each(json, function(key,val) {
@@ -23,7 +24,8 @@ function tweet_summary_markup(json) {
         markup.push("</p>");
         markup.push("<img src=");
         markup.push(pic);
-        markup.push("><h2>");
+        markup.push(">");
+        markup.push("<h2>");
         markup.push(username);
         markup.push("</h2>");
         markup.push("</a></li>");
