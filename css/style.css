@@ -1,0 +1,31 @@
+ul {
+width: 600px;
+list-style:none;
+}
+
+h2 {
+font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+li img {
+float: left;
+margin: 0 15px 0 0;
+}
+
+li p {
+font: 200 16px/1.5 Georgia, Times New Roman, serif;
+}
+
+li {
+padding: 0 0 10px 10px;
+margin-bottom: 0.5em;
+border-left: 1px solid #999;
+border-radius: 5px;
+}
+
+li:hover {
+background: #eee;
+cursor: pointer;
+}
+
+
