@@ -11,7 +11,7 @@
 <body>
     <div data-role="page" id="listpage" data-theme="d">
         <div data-role="header" data-theme="d">
-            <div data-role="controlgroup" data-type="horizontal">
+            <div id=filtercontrols data-role="controlgroup" data-type="horizontal">
             <a href="#hash" data-role="button" data-icon="" data-inline="true">#</a>
             <a href="#at" data-role="button" data-inline="true">@</a>
             <a href="#loc" data-role="button" data-inline="true">&</a>
@@ -20,6 +20,11 @@
             </div>
         </div>
         <div data-role="content">
+            <div id=sortcontrols data-role="controlgroup" data-type="horizontal">
+                <a id=usersort sortby=user data-role="button" data-inline="true">@</a>
+                <a id=locationsort sortby=location data-role="button" data-inline="true">&</a>
+                <a id=datesort sortby=date data-role="button" data-inline="true">*</a>
+            </div>
             <ul id="listfaves" data-role="listview" data-inset="true">
                 <!-- dynamically-generated list items -->
             </ul>
@@ -30,7 +35,6 @@
         </div>
         <!--<div data-role="footer"></div>-->        
     </div>
-
     <div data-role="page" id="tweetview">
         <div data-role="header"></div>
         <div data-role="content">

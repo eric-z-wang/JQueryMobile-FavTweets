@@ -2,10 +2,14 @@
 Globals
 **/
 var JSON_PATH='jsons/favs.json';
-var favourites_json; // Full on favourites list
-var cur_json; // Filtered, ordered list.
+var favourites_json; // Full favourites list. DO NOT MODIFY.
+var cur_json; // Filtered, ordered list. Modify as much as you want.
 var json_page_limit = 2;
 var current_page=1;
+var current_order='default'; 
+/*
+    We can order by 'hashtag', 'user', 'date', 'location'. In 'ascending' and 'descending' order.
+*/
 
 /*
 Get the local json file to store into cached mem.
@@ -15,7 +19,7 @@ function preload_faves() {
     $.getJSON(JSON_PATH, function(data) {
         favourites_json=data; // Cached in memory for better performance.
         cur_json = favourites_json; // Need this later once we have sorting/filtering
-        tweet_summary_markup(return_json_page(favourites_json,current_page));
+        refresh_list();
     });
 }
 
@@ -32,12 +36,16 @@ function return_json_page(faves_json, pagenum) {
 
 function next_page() {
     current_page = Math.min(Math.floor(cur_json.length/json_page_limit)+1,current_page += 1);
-    tweet_summary_markup(return_json_page(favourites_json,current_page));
+    refresh_list();
 }
 
 function prev_page() {
     current_page = Math.max(1,current_page-1);
-    tweet_summary_markup(return_json_page(favourites_json,current_page));
+    refresh_list();
+}
+
+function refresh_list() {
+    tweet_summary_markup(return_json_page(cur_json,current_page));
 }
 
 
@@ -53,9 +61,21 @@ to sort the tweets by.
 
 Output: a properly sorted json containing the faves.
 */
-function sort_faves(sort_by, faves) {
-    //sorted_faves = faves;
-    //return sorted_faves;
+function sort_faves(sort_by) {
+    var sortdict={ 
+    'user':function(a,b){return a['user']['screen_name']-b['user']['screen_name']},
+    'location':function(a,b){return a['geo']-b['geo']},
+    'date': function(a,b){return a['created_at']-b['created_at']}
+                 }
+
+    if (sort_by==current_order) {
+        cur_json.reverse(sortdict[sort_by]);        
+    } else {
+        cur_json.sort(sortdict[sort_by]);
+    }
+    current_order=sort_by;
+    current_page=1;
+    refresh_list();
 }
 
 
@@ -69,4 +89,5 @@ Output: Filtered faves json.
 function filter_faves(hashes, ats, locs, dates, faves) {
     //filtered_faves = faves;
     //return filtered_faves;
+    refresh_list();
 }

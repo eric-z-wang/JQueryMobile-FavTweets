@@ -18,7 +18,7 @@ function tweet_summary_markup(json) {
         username=val['user']['name'];
 
         // Build up the html markup:
-        markup = ["<li><a>"];
+        markup = ["<li class=tweet><a>"];
         markup.push("<p>");
         markup.push(text);
         markup.push("</p>");

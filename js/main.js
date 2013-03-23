@@ -7,13 +7,33 @@
     $("#nextpage").click(function() {
         next_page();
     });
-   //$("#loadfavesbutton").onClick(function(e) {
 
     $("#prevpage").click(function() {
         prev_page();
     });
 
-   preload_faves();
-   //     )});
-    
- })
+    /* This stuff didn't work well.
+    $("#sortcontrols").click(function() {
+        console.log($(this));
+        // console.log($(value).attr('sortby'));                    
+        // sort_faves($(value).attr('sortby'));
+    });*/
+
+    $("#hashsort").click(function() {
+        sort_faves($(this).attr('sortby'));
+    });
+
+    $("#usersort").click(function() {
+        sort_faves($(this).attr('sortby'));
+    });
+
+    $("#locationsort").click(function() {
+        sort_faves($(this).attr('sortby'));
+    });
+
+    $("#datesort").click(function() {
+        sort_faves($(this).attr('sortby'));
+    });
+
+   preload_faves();    
+ });
