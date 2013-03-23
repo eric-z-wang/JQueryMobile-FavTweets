@@ -13,12 +13,13 @@ function tweet_summary_markup(json) {
     // Make markup for each json in the thinga:    
     $.each(json, function(key,val) {
         // Get the relevant stuffs from the json:
+        id=key;
         text=val['text'];
         pic=val['user']['profile_image_url'];
         username=val['user']['name'];
 
         // Build up the html markup:
-        markup = ["<li class=tweet><a>"];
+        markup = ["<li class=tweet id=", id, "><a>"];
         markup.push("<p>");
         markup.push(text);
         markup.push("</p>");
@@ -29,9 +30,21 @@ function tweet_summary_markup(json) {
         markup.push(username);
         markup.push("</h2>");
         markup.push("</a></li>");
-        list_root.append(markup.join('')); 
-        console.log(markup);
+        list_root.append(markup.join(''));         
     });
+
+    // Attach handler to his here bitch
+    list_root.children().click(function() {
+        viewer=$("#tweetviewcontent");
+        viewer.empty();
+        tweet=tweet_mark_up(cur_json[parseInt($(this).attr("id"))+current_page]);
+        viewer.append(tweet);
+        $.mobile.changePage('#tweetview', {
+                allowSamePageTransition:true,
+                transition:'pop'});
+        // Pop that bitch open now
+    });
+
     // Code goes here
     return markup;
 }
@@ -45,7 +58,7 @@ Output: HTML markup, dummy!
 function tweet_mark_up(json) {
     markup = ""; 
     // Code goes here
-    return markup;
+    return "<div>"+json+"</div>";
 }
 
 

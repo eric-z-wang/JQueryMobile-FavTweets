@@ -1,5 +1,5 @@
 /** 
-Globals
+* Globals
 **/
 var JSON_PATH='jsons/favs.json';
 var favourites_json; // Full favourites list. DO NOT MODIFY.
