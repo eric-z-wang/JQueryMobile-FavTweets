@@ -4,7 +4,7 @@
 var JSON_PATH='jsons/favs.json';
 var favourites_json; // Full favourites list. DO NOT MODIFY.
 var cur_json; // Filtered, ordered list. Modify as much as you want.
-var json_page_limit = 2;
+var json_page_limit = 3;
 var current_page=1;
 var current_order='default'; 
 /*
@@ -63,9 +63,9 @@ Output: a properly sorted json containing the faves.
 */
 function sort_faves(sort_by) {
     var sortdict={ 
-    'user':function(a,b){return a['user']['screen_name']-b['user']['screen_name']},
-    'location':function(a,b){return a['geo']-b['geo']},
-    'date': function(a,b){return a['created_at']-b['created_at']}
+    'user':function(a,b){return a['user']['screen_name']>b['user']['screen_name']},
+    'location':function(a,b){return a['geo']>b['geo']},
+    'date': function(a,b){return a['created_at']>b['created_at']}
                  }
 
     if (sort_by==current_order) {
