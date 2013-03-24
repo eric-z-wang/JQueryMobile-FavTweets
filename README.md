@@ -5,7 +5,8 @@ Tweets by Twits: A Twitter Favourites History Browsing Client for the Mobile Web
 
 Written for HTML5 using JQuery Mobile 1.3.
 
-francisco canas (g1canasf)
+Francisco Canas (g1canasf)
+Zhanara Orazbayeva (g2zhan)
 ...
 
 
