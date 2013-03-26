@@ -37,7 +37,7 @@ function tweet_summary_markup(json) {
     list_root.children().click(function() {
         viewer=$("#tweetviewcontent");
         viewer.empty();
-        tweet=tweet_mark_up(cur_json[parseInt($(this).attr("id"))+current_page]);
+        tweet=tweet_mark_up(cur_json[parseInt($(this).attr("id"))+current_page-1]);
         viewer.append(tweet);
         $.mobile.changePage('#tweetview', {
                 allowSamePageTransition:true,
@@ -56,9 +56,39 @@ Input: a json object holding the tweet.
 Output: HTML markup, dummy!
 */
 function tweet_mark_up(json) {
-    markup = ""; 
+    favourites_count=json['user']['favourites_count'];
+    retweet_count=json['retweet_count'];
+    text=json['text'];
+    username=json['user']['name'];
+    pic=json['user']['profile_image_url']
+    created_at=json['created_at'];
+
+    markup = ["<div class='individual-tweet'>"];
+    markup.push("<img src=");
+    markup.push(pic);
+    markup.push(">");
+    markup.push("<h2>");
+    markup.push(username);
+    markup.push("</h2>");
+    markup.push("<p>");
+    markup.push(text);
+    markup.push("</p>");
+    markup.push("<div class='retweet'>");
+    markup.push("<strong>");
+    markup.push(retweet_count);
+    markup.push(" </strong>RETWEETS");
+    markup.push("</div>");
+    markup.push("<div class='favourites'>");
+    markup.push("<strong>");
+    markup.push(favourites_count);
+    markup.push(" </strong>FAVOURITES");
+    markup.push("</div>");
+    markup.push("<div class='create_time'>");
+    markup.push(created_at);
+    markup.push("</div></div>");
+    
     // Code goes here
-    return "<div>"+json+"</div>";
+    return markup.join('');
 }
 
 
