@@ -37,7 +37,7 @@ function tweet_summary_markup(json) {
     list_root.children().click(function() {
         viewer=$("#tweetviewcontent");
         viewer.empty();
-        tweet=tweet_mark_up(cur_json[parseInt($(this).attr("id"))+current_page-1]);
+        tweet=tweet_mark_up(cur_json[parseInt($(this).attr("id"))+(current_page-1)*json_page_limit]);
         viewer.append(tweet);
         $.mobile.changePage('#tweetview', {
                 allowSamePageTransition:true,
