@@ -18,7 +18,7 @@
         <div data-role="content">
             <!--2 columns grid-->
             <div class="ui-grid-a ui-responsive">
-                <div class="ui-block-a"><strong>
+                <div class="ui-block-a">
                     <div id=filtercontrols data-role="controlgroup" data-type="horizontal">
                         <a href="#hash" data-role="button" data-inline="true">#</a>
                         <a href="#at" data-role="button" data-inline="true">@</a>
@@ -27,13 +27,17 @@
                         <a id="loadfavesbutton" data-role="button" data-inline="true">LOAD</a>
                     </div> 
                 </div>
-                <div class="ui-block-b"><strong>
-                    <div id=sortcontrols data-role="controlgroup" data-type="horizontal">
+                <div class="ui-block-b">
+                        <div id=sortcontrols data-role="controlgroup" data-type="horizontal">
                         <a id=usersort sortby=user data-role="button" data-inline="true">username</a>
                         <a id=locationsort sortby=location data-role="button" data-inline="true">geo-location</a>
                         <a id=datesort sortby=date data-role="button" data-inline="true">date</a>
                     </div>
-                    <ul id="listfaves" data-role="listview" data-inset="true">
+                    <ul data-role="listview" data-inset="true">
+                        <li><a href="#">
+                            <p id="listfaves"></p>
+                            <p class="ui-li-aside"></p>
+                        </a></li>
                         <!-- dynamically-generated list items -->
                     </ul>
                     <div data-role="controlgroup" data-type="horizontal">
