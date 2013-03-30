@@ -1,27 +1,14 @@
 
-@media all and (min-width: 800px) {
-  #nav {
-    width: 300px;
-    float: left;
-    margin-right: 20px;
-  }
-  #grid {
-    width: 450px;
-    float: left;
-  }
-}
-
-@media all and (max-width: 799px) {
-  #nav {
-    width: 100%;
-  }
-  #grid {
-    width: 100%;
-  }
+@media all and (max-width: 50em) {
+	.my-breakpoint .ui-block-a, 
+	.my-breakpoint .ui-block-b { 
+		width: 100%; 
+		float:none; 
+	}
 }
 
 ul {
-width: 600px;
+width: 30em;
 list-style:none;
 }
 
