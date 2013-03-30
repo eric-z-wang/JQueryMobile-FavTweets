@@ -2,8 +2,9 @@
 @media all and (max-width: 50em) {
 	.my-breakpoint .ui-block-a, 
 	.my-breakpoint .ui-block-b { 
-		width: 100%; 
+		width:100%; 
 		float:none; 
+                position:relative;
 	}
 }
 
