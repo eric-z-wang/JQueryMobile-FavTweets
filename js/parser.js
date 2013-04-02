@@ -44,7 +44,6 @@ function load_hashes() {
 	hashlist = cur_json[i]["entities"]["hashtags"];
 	
 	for (var j=0; j<hashlist.length; j++) {
-	  console.log(hashlist[j]["text"]);
 	  hashtags.push(hashlist[j]["text"]);
 	}
   }
@@ -64,7 +63,6 @@ function load_ats() {
   console.log('Loading ats into list.');
   
   for (var i=0; i<cur_json.length; i++) {
-	console.log(cur_json[i]["user"]["name"]);
 	ats.push(cur_json[i]["user"]["name"]);
   }
   
@@ -84,7 +82,6 @@ function load_locations() {
   console.log('Loading locations into list.');
   
   for (var i=0; i<cur_json.length; i++) {
-	console.log(cur_json[i]["place"]);
 	if (cur_json[i]["place"]) {
 	  locations.push(cur_json[i]["place"]["name"]);
 	}
@@ -159,6 +156,7 @@ Output: Filtered faves json.
 */
 function filter_hashes(hash) {
 	console.log("Filtering hashes.");
+	
 	console.log(hash);
 	
 	var hashlist;
@@ -177,6 +175,7 @@ function filter_hashes(hash) {
 		}
 	}
 	cur_json = filter_list;
+	// Remove duplicates.
     refresh_list();
 }
 

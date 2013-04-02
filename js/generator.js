@@ -103,7 +103,7 @@ function generate_hashes(hashtags) {
 	markup = [];
 	hash = hashtags[i];
 	
-	markup.push("<li><a href='index.html'>");
+	markup.push("<li hashID=", hash, "><a href='index.html'>");
 	markup.push(hash);
 	markup.push("</a></li>");
 	
@@ -111,8 +111,8 @@ function generate_hashes(hashtags) {
 	console.log(hash);
 	
 	
-	list_root.children('li:last-child').click(function() {
-		filter_hashes(hash);
+	list_root.children().click(function() {
+		filter_hashes([$(this).attr("hashID")]);
 	});
   }
 }
