@@ -4,7 +4,7 @@
 var JSON_PATH='jsons/favs.json';
 var favourites_json; // Full favourites list. DO NOT MODIFY.
 var cur_json; // Filtered, ordered list. Modify as much as you want.
-var json_page_limit = 3;
+var json_page_limit = 10;
 var current_page=1;
 var current_order='default'; 
 var hashtags;

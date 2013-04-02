@@ -18,19 +18,19 @@
         <div data-role="content">
             <!--2 columns grid-->
             <div class="ui-grid-a my-breakpoint">
-                <div class="ui-block-a"><strong></strong>  
-                    <div id=filtercontrols data-role="controlgroup" data-type="horizontal">
+                <div class="ui-block-a">
+                    <fieldset id=filtercontrols data-role="controlgroup" data-type="vertical">
                         <a id = "hashfilter" href="#hash"><img src="hashtag.png" height="30" width="30"></a>
                         <a id = "atfilter" href="#at"><img src="at-sign.png" height="100" width="100"></a>
                         <a id = "locfilter" href="#loc"><img src="amperssand.png" height="100" width="100"></a>
                     </div> 
                 </div>
                 <div class="ui-block-b">
-                        <div id=sortcontrols data-role="controlgroup" data-type="horizontal">
+                    <fieldset id=sortcontrols data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <a id=usersort sortby=user data-role="button" data-inline="true">username</a>
                         <a id=locationsort sortby=location data-role="button" data-inline="true">geo-location</a>
                         <a id=datesort sortby=date data-role="button" data-inline="true">date</a>
-                    </div>
+                    </fieldset>
                     <ul data-role="listview" data-inset="true">
                         <li><a href="#">
                             <p id="listfaves"></p>
