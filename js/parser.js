@@ -7,6 +7,11 @@ var cur_json; // Filtered, ordered list. Modify as much as you want.
 var json_page_limit = 3;
 var current_page=1;
 var current_order='default'; 
+var hashtags;
+var hashtags_set = 0;
+var ats_set = 0;
+var locations_set = 0;
+
 /*
     We can order by 'hashtag', 'user', 'date', 'location'. In 'ascending' and 'descending' order.
 */
@@ -24,11 +29,78 @@ function preload_faves() {
 }
 
 /*
+ * Load the hashtags into the hashtag list if they have not been loaded yet.
+ */
+function load_hashes() {
+  if (hashtags_set) {
+	return;
+  }
+  var hashtags = new Array();
+  console.log('Loading hashtags into list.');
+  
+  var hashlist = new Array();
+  
+  for (var i=0; i<cur_json.length; i++) {
+	hashlist = cur_json[i]["entities"]["hashtags"];
+	
+	for (var j=0; j<hashlist.length; j++) {
+	  console.log(hashlist[j]["text"]);
+	  hashtags.push(hashlist[j]["text"]);
+	}
+  }
+  console.log(hashtags);
+  generate_hashes(hashtags);
+  hashtags_set = 1;
+}
+
+/*
+* Load the ats into the hashtag list if they have not been loaded yet.
+*/
+function load_ats() {
+  if (ats_set) {
+	return;
+  }
+  var ats = new Array();
+  console.log('Loading ats into list.');
+  
+  for (var i=0; i<cur_json.length; i++) {
+	console.log(cur_json[i]["user"]["name"]);
+	ats.push(cur_json[i]["user"]["name"]);
+  }
+  
+  console.log(ats);
+  generate_ats(ats);
+  ats_set = 1;
+}
+
+/*
+ * Load the locations into the location list if they have not been loaded yet.
+ */
+function load_locations() {
+  if (locations_set) {
+	return;
+  }
+  var locations = new Array();
+  console.log('Loading locations into list.');
+  
+  for (var i=0; i<cur_json.length; i++) {
+	console.log(cur_json[i]["place"]);
+	if (cur_json[i]["place"]) {
+	  locations.push(cur_json[i]["place"]["name"]);
+	}
+  }
+  
+  console.log(locations);
+  generate_locations(locations);
+  locations_set = 1;
+}
+
+/*
 Slices the correct json elements from a json object given
 a page number.
 */
 function return_json_page(faves_json, pagenum) {
-    start = (pagenum - 1)* json_page_limit;
+    start = (pagenum - 1) * json_page_limit;
     end = pagenum * (json_page_limit);
     
     return faves_json.slice(start,end);    
@@ -67,7 +139,6 @@ function sort_faves(sort_by) {
     'location':function(a,b){return a['geo']>b['geo']},
     'date': function(a,b){return a['created_at']>b['created_at']}
                  }
-
     if (sort_by==current_order) {
         cur_json.reverse(sortdict[sort_by]);        
     } else {
@@ -75,29 +146,5 @@ function sort_faves(sort_by) {
     }
     current_order=sort_by;
     current_page=1;
-    refresh_list();
-}
-
-
-/*
-Takes the user's fave tweets json and finds all tweets which
-meet the filter parameters, then returns the filtered json
-for those faves.
-Input: 4 lists of parameters to filter by, 1 json for faves.
-Output: Filtered faves json.
-*/
-function filter_faves(tags, faves) {
-    filtered_faves = [];
-    tag_exists = 1;
-    $.each(faves, function(fav_key,fav_val) {
-        $.each(tags, function(tag_key, tag_val)
-            if (fav_val['text'].indexOf(tag_val) == -1){
-                tag_exists = 0;
-                break;
-            }
-        if (tag_exists){    
-            filtered_faves.push(fav_val);
-        }
-    return filtered_faves;
     refresh_list();
 }

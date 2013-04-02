@@ -20,10 +20,9 @@
             <div class="ui-grid-a my-breakpoint">
                 <div class="ui-block-a"><strong></strong>  
                     <div id=filtercontrols data-role="controlgroup" data-type="horizontal">
-                        <a href="#hash"><img src="number-sign.png" height="100" width="100"></a>
-                        <a href="#at"><img src="at-sign.png" height="100" width="100"></a>
-                        <a href="#loc"><img src="ampersand.png" height="100" width="100"></a>
-                        <a href="#date"><img src="asterisk.png" height="100" width="100"></a>
+                        <a id = "hashfilter" href="#hash"><img src="hashtag.png" height="30" width="30"></a>
+                        <a id = "atfilter" href="#at"><img src="at-sign.png" height="100" width="100"></a>
+                        <a id = "locfilter" href="#loc"><img src="amperssand.png" height="100" width="100"></a>
                     </div> 
                 </div>
                 <div class="ui-block-b">
@@ -51,7 +50,6 @@
     <div data-role="dialog" id="tweetview">
         <div data-role="header"></div>
         <div id=tweetviewcontent data-role="content">
-            
         </div>
         <a href="#listpage" data-role="button">back</a>
     </div>
@@ -59,24 +57,24 @@
         <!--pages associated with corresponded tag buttons-->
         
     <div data-role="page" id="hash">
-         <div data-role="content">
-            <a href="#listpage" data-role="button">back</a>
-        </div>
-    </div>
+	  <div data-role="content">
+		  <ul id="hashList" data-role="listview" data-filter="true">
+		  <!--hashtags-->
+		  </ul>
+	  </div>
+	</div>
     <div data-role="page" id="at">
-         <div data-role="content">
-            <a href="#listpage" data-role="button">back</a>
-        </div>
+	  <div data-role="content">
+		  <ul id="atList" data-role="listview" data-filter="true">
+			<!--ats-->
+		  </ul>
+	  </div>
     </div>
     <div data-role="page" id="loc">
          <div data-role="content">
-            <a href="#listpage" data-role="button">back</a>
+            <ul id="locList" data-role="listview" data-filter="true">
+			  <!--ats-->
+			</u1>
         </div>
     </div>
-    <div data-role="page" id="date">
-         <div data-role="content">
-            <a href="#listpage" data-role="button">back</a>
-        </div>
-    </div>
-    
 </body>

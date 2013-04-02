@@ -34,8 +34,20 @@
     $("#datesort").click(function() {
         sort_faves($(this).attr('sortby'));
     });
-
-   preload_faves();    
+	
+	$("#hashfilter").click(function() {
+	  load_hashes();
+	});
+	
+	$("#atfilter").click(function() {
+	  load_ats();
+	});
+	
+	$("#locfilter").click(function() {
+	  load_locations();
+	});
+	
+   preload_faves();
  });
 
 

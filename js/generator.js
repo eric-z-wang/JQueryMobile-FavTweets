@@ -91,4 +91,53 @@ function tweet_mark_up(json) {
     return markup.join('');
 }
 
+function generate_hashes(hashtags) {
+  console.log("Generating hashes.");
+  list_root=$('#hashList');
+  list_root.empty();
+  
+  markup = [];
+  
+  for (var i=0; i<hashtags.length; i++) {
+	markup.push("<li><a href='index.html'>");
+	markup.push(hashtags[i]);
+	markup.push("</a></li>");
+	}
+	
+  list_root.append(markup.join('')); 
+  return markup;
+}
 
+function generate_ats(ats) {
+  console.log("Generating ats.");
+  list_root=$('#atList');
+  list_root.empty();
+  
+  markup = [];
+  
+  for (var i=0; i<ats.length; i++) {
+	markup.push("<li><a href='index.html'>");
+	markup.push(ats[i]);
+	markup.push("</a></li>");
+  }
+  
+  list_root.append(markup.join('')); 
+  return markup;
+}
+
+function generate_locations(locations) {
+  console.log("Generating locations.");
+  list_root=$('#locList');
+  list_root.empty();
+  
+  markup = [];
+  
+  for (var i=0; i<locations.length; i++) {
+	markup.push("<li><a href='index.html'>");
+	markup.push(locations[i]);
+	markup.push("</a></li>");
+  }
+  
+  list_root.append(markup.join('')); 
+  return markup;
+}
