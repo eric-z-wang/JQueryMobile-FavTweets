@@ -88,8 +88,8 @@ Output: Filtered faves json.
 */
 function filter_faves(tags, faves) {
     filtered_faves = [];
-    tag_exists = 1;
     $.each(faves, function(fav_key,fav_val) {
+        tag_exists = 1;
         $.each(tags, function(tag_key, tag_val){
             if (fav_val['text'].indexOf(tag_val) == -1){
                 tag_exists = 0;
