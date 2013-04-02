@@ -96,17 +96,27 @@ function generate_hashes(hashtags) {
   list_root=$('#hashList');
   list_root.empty();
   
-  markup = [];
+  var hash;
+  
   
   for (var i=0; i<hashtags.length; i++) {
-	markup.push("<li><a href='index.html'>");
-	markup.push(hashtags[i]);
-	markup.push("</a></li>");
-	}
+	markup = [];
+	hash = hashtags[i];
 	
-  list_root.append(markup.join('')); 
-  return markup;
+	markup.push("<li><a href='index.html'>");
+	markup.push(hash);
+	markup.push("</a></li>");
+	
+	list_root.append(markup.join(''));
+	console.log(hash);
+	
+	
+	list_root.children('li:last-child').click(function() {
+		filter_hashes(hash);
+	});
+  }
 }
+
 
 function generate_ats(ats) {
   console.log("Generating ats.");
