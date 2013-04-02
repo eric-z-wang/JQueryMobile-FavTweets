@@ -33,6 +33,7 @@ function preload_faves() {
  */
 function load_hashes() {
   if (hashtags_set) {
+	cur_json = favourites_json;
 	return;
   }
   var hashtags = new Array();
