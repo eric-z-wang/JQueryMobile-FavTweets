@@ -83,21 +83,23 @@ function sort_faves(sort_by) {
 Takes the user's fave tweets json and finds all tweets which
 meet the filter parameters, then returns the filtered json
 for those faves.
-Input: 4 lists of parameters to filter by, 1 json for faves.
+Input: a list of parameters to filter by, 1 json for faves.
 Output: Filtered faves json.
 */
 function filter_faves(tags, faves) {
     filtered_faves = [];
     tag_exists = 1;
     $.each(faves, function(fav_key,fav_val) {
-        $.each(tags, function(tag_key, tag_val)
+        $.each(tags, function(tag_key, tag_val){
             if (fav_val['text'].indexOf(tag_val) == -1){
                 tag_exists = 0;
-                break;
+                return false;
             }
+        });
         if (tag_exists){    
             filtered_faves.push(fav_val);
         }
+    });
     return filtered_faves;
     refresh_list();
 }
