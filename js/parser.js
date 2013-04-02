@@ -157,21 +157,26 @@ for those faves.
 Input: a list of parameters to filter by, 1 json for faves.
 Output: Filtered faves json.
 */
-function filter_faves(tags, faves) {
-    filtered_faves = [];
-    $.each(faves, function(fav_key,fav_val) {
-        tag_exists = 1;
-        $.each(tags, function(tag_key, tag_val){
-            if (fav_val['text'].indexOf(tag_val) == -1){
-                tag_exists = 0;
-                return false;
-            }
-        });
-        if (tag_exists){    
-            filtered_faves.push(fav_val);
-        }
-    });
-    return filtered_faves;
+function filter_hashes(hash) {
+	console.log("Filtering hashes.");
+	console.log(hash);
+	
+	var hashlist;
+    var filter_list = new Array();
+    
+	for (var i=0; i<cur_json.length; i++) {
+	  
+	  // Hashtag value is a list, so, go through the list.
+	  hashlist = cur_json[i]["entities"]["hashtags"];
+	  
+	  for (var j=0; j<hashlist.length; j++) {
+		
+			if (hashlist[j]["text"] == hash) {
+				filter_list.push(cur_json[i]);
+			}
+		}
+	}
+	cur_json = filter_list;
     refresh_list();
 }
 
