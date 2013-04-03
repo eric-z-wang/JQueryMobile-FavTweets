@@ -102,6 +102,11 @@ function load_locations() {
   locations_set = 1;
 }
 
+function reset_filter() {
+  cur_json = favourites_json;
+  refresh_list();
+}
+
 /*
 Slices the correct json elements from a json object given
 a page number.

@@ -12,6 +12,11 @@
         prev_page();
     });
 
+    $("#reset").click(function() {
+        alert("fuck");
+        reset_filter();
+    });
+
     /* This stuff didn't work well.
     $("#sortcontrols").click(function() {
         console.log($(this));
