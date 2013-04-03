@@ -73,6 +73,7 @@ function load_ats() {
   users.sort(function(a,b){return b[1]-a[1]});
   users = remove_list_duplicates(users);
   
+  console.log(users);
   generate_ats(users);
   ats_set = 1;
 }
@@ -123,6 +124,7 @@ function prev_page() {
 }
 
 function refresh_list() {
+    console.log();
     tweet_summary_markup(return_json_page(cur_json,current_page));
 }
 
@@ -169,15 +171,15 @@ function filter_hashes(hash) {
 	var hashlist;
     var filter_list = new Array();
     
-	for (var i=0; i<cur_json.length; i++) {
+	for (var i=0; i<favourites_json.length; i++) {
 	  
 	  // Hashtag value is a list, so, go through the list.
-	  hashlist = cur_json[i]["entities"]["hashtags"];
+	  hashlist = favourites_json[i]["entities"]["hashtags"];
 	  
 	  for (var j=0; j<hashlist.length; j++) {
 		
 			if (hashlist[j]["text"] == hash) {
-				filter_list.push(cur_json[i]);
+				filter_list.push(favourites_json[i]);
 			}
 		}
 	}
@@ -191,9 +193,9 @@ function filter_ats(id) {
   
   var at_list = new Array();
 
-  for (var i=0; i<cur_json.length; i++) {
-	if (cur_json[i]["user"]["id"] == id) {
-		at_list.push(cur_json[i]);
+  for (var i=0; i<favourites_json.length; i++) {
+	if (favourites_json[i]["user"]["id"] == id) {
+		at_list.push(favourites_json[i]);
 	  }
 	}
   cur_json = at_list;
@@ -205,17 +207,15 @@ function filter_locations(location) {
   var place;
   var filter_list = new Array();
   
-  for (var i=0; i<cur_json.length; i++) {
-	
-	  place = cur_json[i]["place"];
+  for (var i=0; i<favourites_json.length; i++) {
+	  place = favourites_json[i]["place"];
 	  
 	  if (place != null) {
-		if (cur_json[i]["place"]["name"] == location) {
-			filter_list.push(cur_json[i]);
+		if (favourites_json[i]["place"]["name"] == location) {
+			filter_list.push(favourites_json[i]);
 		}
 	  }
   }
-  
   cur_json = filter_list;
   refresh_list();
 }
