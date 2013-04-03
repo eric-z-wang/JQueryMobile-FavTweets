@@ -16,13 +16,17 @@
         
     } 
     
+    
 }
 
 .sortbutton {
-    width:5em;
+    width:12em;
 }
 
 .override-ui-screen-hidden {
   display:block !important;   
 }
 
+.tweet {
+    display:inline-block;
+}
