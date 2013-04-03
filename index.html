@@ -15,35 +15,38 @@
         <div data-role="header" data-theme="d">
             <h1>Tweets by Twits</h1> 
         </div>
-                   
+        
+        <div data-role="header" style="overflow:hidden;" id=filtercontrols>
+			<h1>Filter by ...</h1>
+			<a href="#reset" data-icon="gear" class="ui-btn-right">Reset</a>
+			<div data-role="navbar">
+				<ul>
+					<li><a id="hashfilter" href="#hash">Hashtag</a></li>
+					<li><a id="atfilter" href="#at">User</a></li>
+					<li><a id="locfilter" href="#loc">Location</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+	
+		<div data-role="header" style="overflow:hidden;" id=sortcontrols>
+			<h2>Sort by ...</h2>
+			<div data-role="navbar">
+				<ul>
+					<li><a class=sortbutton id=usersort sortby=user data-role="button">Username</a></li>
+					<li><a class=sortbutton id=locationsort sortby=location data-role="button">Location</a></li>
+					<li><a class=sortbutton id=datesort sortby=date data-role="button">Date</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->
+
         <div data-role="content">
-            <!--2 columns grid-->
-            <div class="ui-grid-a my-breakpoint">
-                <div class="ui-block-a">
-                    <div id=topleftspacer>
-                    <p><br></p>
-                    </div>
-                    <div id=filtercontrols data-role="controlgroup" data-type="horizontal">
-                        <a data-role=button id="hashfilter" href="#hash"><img src="number-sign.png" height="100" width="100"/></a>
-                        <a data-role=button id="atfilter" href="#at"><img src="at-sign.png" height="100" width="100"/></a>
-                        <a data-role=button id="locfilter" href="#loc"><img src="ampersand.png" height="100" width="100"/></a>
-                    </div> 
-                </div>
-                <div class="ui-block-b">
-                    <div id=sortcontrols data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <a class=sortbutton id=usersort sortby=user data-role="button" data-inline="true">username</a>
-                        <a class=sortbutton id=locationsort sortby=location data-role="button" data-inline="true">geo-location</a>
-                        <a class=sortbutton id=datesort sortby=date data-role="button" data-inline="true">date</a>
-                    </div>
-                    <ul data-role="listview" data-inset="true" id="listfaves">
-                        <!-- dynamically-generated list items -->
-                    </ul>
-                    <div data-role="controlgroup" data-type="horizontal">
-                        <a id="prevpage" data-role="button">previous</a>
-                        <a id="nextpage" data-role="button">next</a>
-                    </div>
-                </div>
-            </div>
+			<ul data-role="listview" data-inset="true" id="listfaves">
+			  <!-- dynamically-generated list items -->
+            </ul>
+        </div>
+        <div data-role="controlgroup" data-type="horizontal">
+		  <a id="prevpage" data-role="button">previous</a>
+          <a id="nextpage" data-role="button">next</a>
         </div>
     </div>
         <!--<div data-role="footer"></div>-->        
