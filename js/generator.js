@@ -19,17 +19,23 @@ function tweet_summary_markup(json) {
         username=val['user']['name'];
 
         // Build up the html markup:
-        markup = ["<li class=tweet id=", id, "><a>"];
-        markup.push("<p>");
-        markup.push(text);
-        markup.push("</p>");
+        markup = ["<li href=# class=tweet id=", id, ">"];
+        markup.push("<div>");
+        markup.push("<div>");
         markup.push("<img src=");
         markup.push(pic);
         markup.push(">");
+        markup.push("</div>");
+        markup.push("<div>");
         markup.push("<h2>");
         markup.push(username);
         markup.push("</h2>");
-        markup.push("</a></li>");
+        markup.push("<p>");
+        markup.push(text);
+        markup.push("</p>");
+        markup.push("</div>");
+        markup.push("</div>");
+        markup.push("</li>");
         list_root.append(markup.join(''));         
     });
 
@@ -167,4 +173,7 @@ function generate_ats(users) {
 	  filter_ats([$(this).attr("atID")]);
 	});
   }
+  
+  list_root.append(markup.join('')); 
+  return markup;
 }
