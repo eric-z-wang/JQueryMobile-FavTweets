@@ -19,7 +19,8 @@ function tweet_summary_markup(json) {
         username=val['user']['name'];
 
         // Build up the html markup:
-        markup = ["<li class='ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c' id=", id, ">"];
+
+        markup = ["<li class='ui-btn ui-btn-hover-c' id=", id, ">"];
         markup.push("<p>");
         markup.push(text);
         markup.push("</p>");
@@ -32,8 +33,6 @@ function tweet_summary_markup(json) {
         markup.push("</a></li>");
         list_root.append(markup.join(''));         
     });
-
-    // Attach handler to his here bitch
     list_root.children().click(function() {
         viewer=$("#tweetviewcontent");
         viewer.empty();
@@ -56,6 +55,10 @@ Input: a json object holding the tweet.
 Output: HTML markup, dummy!
 */
 function tweet_mark_up(json) {
+    media_url = '';
+    media_w = 0;
+    media_h = 0;
+    media_exists = 0;
     favourites_count=json['user']['favourites_count'];
     retweet_count=json['retweet_count'];
     text=json['text'];
@@ -63,6 +66,18 @@ function tweet_mark_up(json) {
     pic=json['user']['profile_image_url']
     created_at=json['created_at'];
 
+    if (json['entities']['media']){
+      media_exists = 1;
+      media=json['entities']['media'];
+      for (var i=0;i<media.length;i++){
+        if (media[i]['type'] == "photo"){
+          media_url = media[i]['media_url'];
+          media_h = media[i]['sizes']['small']['h'];
+          media_w = media[i]['sizes']['small']['w'];
+          break;
+        }
+      }
+    }
     markup = ["<div class='individual-tweet'>"];
     markup.push("<img src=");
     markup.push(pic);
@@ -73,6 +88,15 @@ function tweet_mark_up(json) {
     markup.push("<p>");
     markup.push(text);
     markup.push("</p>");
+    if (media_exists){
+        markup.push("<img src=");
+        markup.push(media_url);
+        markup.push(" width=");
+        markup.push(media_w);
+        markup.push(" height=");
+        markup.push(media_h);
+        markup.push(">");
+    }
     markup.push("<div class='retweet'>");
     markup.push("<strong>");
     markup.push(retweet_count);
@@ -87,7 +111,6 @@ function tweet_mark_up(json) {
     markup.push(created_at);
     markup.push("</div></div>");
     
-    // Code goes here
     return markup.join('');
 }
 

@@ -1,3 +1,6 @@
+.listview{ width: 110em;} 
+
+
 @media all and (max-width: 60em) {
 	.my-breakpoint .ui-block-a {
         width:100%;
