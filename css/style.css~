@@ -27,6 +27,6 @@
   display:block !important;   
 }
 
-.tweet {
-    display:inline-block;
+.tweettext {
+    display: block;
 }

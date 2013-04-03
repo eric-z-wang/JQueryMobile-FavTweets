@@ -1,6 +1,6 @@
 @media all and (max-width: 60em) {
 	.my-breakpoint .ui-block-a {
-        width:20%;
+        width:100%;
         
     } 
 	.my-breakpoint .ui-block-b { 
@@ -27,6 +27,6 @@
   display:block !important;   
 }
 
-.tweet {
-
+.tweettext {
+    display: block;
 }

@@ -30,9 +30,9 @@ function tweet_summary_markup(json) {
         markup.push("<h2>");
         markup.push(username);
         markup.push("</h2>");
-        markup.push("<p>");
+        markup.push("<li class=tweettext>");
         markup.push(text);
-        markup.push("</p>");
+        markup.push("</li>");
         markup.push("</div>");
         markup.push("</div>");
         markup.push("</li>");
