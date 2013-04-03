@@ -94,7 +94,7 @@ function tweet_mark_up(json) {
     markup.push("<h2>");
     markup.push("<a href=https://twitter.com/");
     markup.push(screenname);
-    markup.push(">");
+    markup.push(" target=_blank>");
     markup.push(username);
     markup.push("</a></h2>");
     markup.push("<p>");
