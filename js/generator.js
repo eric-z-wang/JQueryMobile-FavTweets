@@ -63,8 +63,17 @@ function tweet_mark_up(json) {
     retweet_count=json['retweet_count'];
     text=json['text'];
     username=json['user']['name'];
-    pic=json['user']['profile_image_url']
+    pic=json['user']['profile_image_url'];
     created_at=json['created_at'];
+    screenname=json['user']['screen_name'];
+    urls=json['entities']['urls'];
+ 
+    //if (urls.length >0) {
+    //    console.log("indicies here");
+    //    console.log(urls);
+    //    markeduptext = mark_up_text(text, urls);
+   //}
+
 
     if (json['entities']['media']){
       media_exists = 1;
@@ -83,8 +92,11 @@ function tweet_mark_up(json) {
     markup.push(pic);
     markup.push(">");
     markup.push("<h2>");
+    markup.push("<a href=https://twitter.com/");
+    markup.push(screenname);
+    markup.push(">");
     markup.push(username);
-    markup.push("</h2>");
+    markup.push("</a></h2>");
     markup.push("<p>");
     markup.push(text);
     markup.push("</p>");
@@ -112,6 +124,35 @@ function tweet_mark_up(json) {
     markup.push("</div></div>");
     
     return markup.join('');
+}
+
+function mark_up_text(text, urls) {
+    var astart = '<a href=';
+    var amiddle = '>';
+    var aend = '</a>';
+    var istart = 0;   
+    urlsmarkup=[];     
+    text_chunks = [];
+    markeduptext=text;
+    indices = [];
+    text_chunks.push(text.slice(istart,iend));
+
+    for (var i=0; i< urls.length; i++)
+        {
+
+            url=urls[i];
+            console.log(url);
+            var istart = url['indices'][0];
+            var iend = url['indices'][1];
+            var replace_str=text.substring(istart,iend);
+            console.log(replace_str);
+            markup=astart, url['url'], amiddle, 
+                text.substring(istart, iend), aend;
+
+            markeduptext.replace(replace_str, markup);
+        }
+    console.log(markeduptext);
+    return markeduptext;
 }
 
 function generate_hashes(hashtags) {
