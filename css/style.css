@@ -33,3 +33,6 @@
 .tweettext {
     display: block;
 }
+
+#pagination {text-align:center;}
+#pagination div {display:inline-block;}

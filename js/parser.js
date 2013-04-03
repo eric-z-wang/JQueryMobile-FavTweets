@@ -103,6 +103,7 @@ function load_locations() {
 }
 
 function reset_filter() {
+  console.log("Resetting...");
   cur_json = favourites_json;
   refresh_list();
 }

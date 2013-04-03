@@ -13,7 +13,6 @@
     });
 
     $("#reset").click(function() {
-        alert("fuck");
         reset_filter();
     });
 
