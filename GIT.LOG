@@ -1,0 +1,51 @@
+c7f8efd was zhanaro4ka, 9 minutes ago, message: readme
+c12e8ba was SasaMilic, 12 minutes ago, message: Made page selector centered.
+296f3de was SasaMilic, 23 minutes ago, message: Fixed bug with reset button.
+69ae623 was Eric Zizhou Wang, 26 minutes ago, message: Added function for reseting filter
+1b044c1 was SasaMilic, 29 minutes ago, message: Fixed button bug.
+bcedcd6 was SasaMilic, 34 minutes ago, message: Changed index.html layout.
+190cc09 was Eric Zizhou Wang, 47 minutes ago, message: Replaced json file with more results
+8c6b308 was Eric Zizhou Wang, 52 minutes ago, message: Added function for display image in the pop up
+f513b7f was Eric Zizhou Wang, 2 hours ago, message: Fixed text wrapping for tweets
+36225b3 was Eric Zizhou Wang, 2 hours ago, message: Fixed tweet buttons layout
+318fb77 was Francisco Canas, 2 hours ago, message: synched to latest generator.js
+52d14bb was Francisco Canas, 2 hours ago, message: Filter changes orientation on resize
+fa15fce was SasaMilic, 2 hours ago, message: Fixed bug in filtering.
+85a9169 was SasaMilic, 3 hours ago, message: Merge branch 'master' of https://github.com/FranciscoCanas/309a3
+79835a5 was SasaMilic, 3 hours ago, message: Sorry about fucking up the json file. Here's the right one.
+e6ce8fc was Francisco Canas, 3 hours ago, message: Resolved conflicts
+0e111e5 was Francisco Canas, 3 hours ago, message: Minor changes to layout
+ec99ff9 was SasaMilic, 3 hours ago, message: Merge branch 'master' of https://github.com/FranciscoCanas/309a3
+f97a1e3 was SasaMilic, 3 hours ago, message: Filtering complete.
+47bee17 was Francisco Canas, 4 hours ago, message: Changes to grid layout. Stacked buttons.l
+7317319 was SasaMilic, 5 hours ago, message: Fixed hashtag filter so that we only allow one filter request.
+e448a99 was SasaMilic, 5 hours ago, message: Merge branch 'master' of https://github.com/FranciscoCanas/309a3
+de04687 was SasaMilic, 5 hours ago, message: Fixed filter bug.
+7f26b39 was Francisco Canas, 6 hours ago, message: Merge branch 'master' of https://github.com/FranciscoCanas/309a3
+9640331 was Francisco Canas, 6 hours ago, message: Layout changes
+a7430dd was SasaMilic, 6 hours ago, message: Merge branch 'master' of https://github.com/FranciscoCanas/309a3
+d6e3156 was SasaMilic, 6 hours ago, message: Added filter functionality for hashtags.
+b784993 was Francisco Canas, 6 hours ago, message: Added script to pull faves from twitter. Changed test json to bigger guy.
+f516574 was SasaMilic, 7 hours ago, message: Fixing synch
+8807baf was SasaMilic, 7 hours ago, message: Added filter preloads.
+258776c was Eric Zizhou Wang, 8 hours ago, message: Fixed another bug
+543939a was Eric Zizhou Wang, 8 hours ago, message: Fixed a bug in filter_faves
+30c2368 was Eric Zizhou Wang, 3 days ago, message: Added and implemented filter_faves in parser
+dd48ce5 was Orazbayeva Zhanara, 3 days ago, message: added images and removed load button
+3b521fd was Orazbayeva Zhanara, 3 days ago, message: image hrefs
+8c1c590 was Orazbayeva Zhanara, 3 days ago, message: working copy of popup windows
+86ffd1f was Orazbayeva Zhanara, 7 days ago, message: Merge branch 'master' of https://github.com/FranciscoCanas/309a3
+3004126 was Orazbayeva Zhanara, 7 days ago, message: changed layout
+2f8cfa6 was Francisco Canas, 7 days ago, message: Bug fix for picking twitters from various pages bug. fix.
+ac027dc was Wang Zi Zhou, 7 days ago, message: Implemented tweet_mark_up for each individual tweet
+44cc078 was Orazbayeva Zhanara, 9 days ago, message: added page for each tag with back button, minot fix
+bbba0ac was Francisco Canas, 11 days ago, message: Sorted out sorting bug.
+4add16c was Milic Sasa, 11 days ago, message: Created initial style sheet. Formatted tweets.
+841a97d was Francisco Canas, 11 days ago, message: Implemented tweet-pop-ups. blammo.
+81003fc was Francisco Canas, 11 days ago, message: Implemented sorting by date, user, geo-location.
+14a0f3e was Francisco Canas, 11 days ago, message: Pagination implemented
+08ac7cd was Francisco Canas, 11 days ago, message: Added sampletweet file as an example of twitter's layout
+57af68e was Francisco Canas, 11 days ago, message: Added jqmobile css file
+9d94d49 was Francisco Canas, 11 days ago, message: Added code for loading the initial json of favourites, and generating the list of faves in their respective html containers. first draft.
+90e81ce was Francisco Canas, 13 days ago, message: Created Project SRC Tree
+dae710f was Francisco Canas, 13 days ago, message: Initial commit
