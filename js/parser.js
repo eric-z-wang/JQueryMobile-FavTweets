@@ -37,18 +37,20 @@ function load_hashes() {
 	return;
   }
   var hashtags = new Array();
-  console.log('Loading hashtags into list.');
   
   var hashlist = new Array();
   
-  for (var i=0; i<cur_json.length; i++) {
-	hashlist = cur_json[i]["entities"]["hashtags"];
+  for (var i=0; i<favourites_json.length; i++) {
+	hashlist = favourites_json[i]["entities"]["hashtags"];
 	
 	for (var j=0; j<hashlist.length; j++) {
 	  hashtags.push(hashlist[j]["text"]);
 	}
   }
-  console.log(hashtags);
+  // Sort and remove duplicates from the list.
+  hashtags.sort();
+  hashtags = remove_duplicates(hashtags);
+  
   generate_hashes(hashtags);
   hashtags_set = 1;
 }
@@ -58,17 +60,20 @@ function load_hashes() {
 */
 function load_ats() {
   if (ats_set) {
+	cur_json = favourites_json;
 	return;
   }
-  var ats = new Array();
+  var users = new Array();
   console.log('Loading ats into list.');
   
-  for (var i=0; i<cur_json.length; i++) {
-	ats.push(cur_json[i]["user"]["name"]);
+  for (var i=0; i<favourites_json.length; i++) {
+	users.push([favourites_json[i]["user"]["id"], favourites_json[i]["user"]["name"]]);
   }
+  // Sort and remove duplicates from the list.
+  users.sort(function(a,b){return b[1]-a[1]});
+  users = remove_list_duplicates(users);
   
-  console.log(ats);
-  generate_ats(ats);
+  generate_ats(users);
   ats_set = 1;
 }
 
@@ -77,18 +82,21 @@ function load_ats() {
  */
 function load_locations() {
   if (locations_set) {
+	cur_json = favourites_json;
 	return;
   }
   var locations = new Array();
   console.log('Loading locations into list.');
   
-  for (var i=0; i<cur_json.length; i++) {
-	if (cur_json[i]["place"]) {
-	  locations.push(cur_json[i]["place"]["name"]);
+  for (var i=0; i<favourites_json.length; i++) {
+	if (favourites_json[i]["place"]) {
+	  locations.push(favourites_json[i]["place"]["name"]);
 	}
   }
+  // Sort and remove duplicates from the list.
+  locations.sort();
+  locations = remove_duplicates(locations);
   
-  console.log(locations);
   generate_locations(locations);
   locations_set = 1;
 }
@@ -157,9 +165,7 @@ Output: Filtered faves json.
 */
 function filter_hashes(hash) {
 	console.log("Filtering hashes.");
-	
-	console.log(hash);
-	
+
 	var hashlist;
     var filter_list = new Array();
     
@@ -180,3 +186,64 @@ function filter_hashes(hash) {
     refresh_list();
 }
 
+function filter_ats(id) {
+  console.log("Filtering ats.");
+  
+  var at_list = new Array();
+
+  for (var i=0; i<cur_json.length; i++) {
+	if (cur_json[i]["user"]["id"] == id) {
+		at_list.push(cur_json[i]);
+	  }
+	}
+  cur_json = at_list;
+  refresh_list();
+}
+
+function filter_locations(location) {
+  console.log("Filtering locations.");
+  var place;
+  var filter_list = new Array();
+  
+  for (var i=0; i<cur_json.length; i++) {
+	
+	  place = cur_json[i]["place"];
+	  
+	  if (place != null) {
+		if (cur_json[i]["place"]["name"] == location) {
+			filter_list.push(cur_json[i]);
+		}
+	  }
+  }
+  
+  cur_json = filter_list;
+  refresh_list();
+}
+
+function remove_duplicates(list) {
+  // New list of unique items.
+  var unique_list = new Array();
+  
+  for (var i=0; i<list.length-1; i++) {
+	if (list[i] != list[i + 1]) {
+	  unique_list.push(list[i]);
+	}
+  }
+  unique_list.push(list[i + 1]);
+  
+  return unique_list;
+}
+
+function remove_list_duplicates(list) {
+  // New list of unique items.
+  var unique_list = new Array();
+  
+  for (var i=0; i<list.length-1; i++) {
+	if (list[i][0] != list[0][i + 1]) {
+	  unique_list.push(list[i]);
+	}
+  }
+  unique_list.push(list[i + 1]);
+  
+  return unique_list;
+}
