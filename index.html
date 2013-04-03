@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/jquery.mobile-1.3.0.min.js"></script>
@@ -19,18 +20,21 @@
             <!--2 columns grid-->
             <div class="ui-grid-a my-breakpoint">
                 <div class="ui-block-a">
-                    <fieldset id=filtercontrols data-role="controlgroup" data-type="vertical">
-                        <a id = "hashfilter" href="#hash"><img src="hashtag.png" height="30" width="30"></a>
-                        <a id = "atfilter" href="#at"><img src="at-sign.png" height="100" width="100"></a>
-                        <a id = "locfilter" href="#loc"><img src="amperssand.png" height="100" width="100"></a>
+                    <div id=topleftspacer>
+                    <p><br></p>
+                    </div>
+                    <div id=filtercontrols data-role="controlgroup" data-type="vertical">
+                        <a data-role=button id = "hashfilter" href="#hash"><img src="number-sign.png" height="100" width="100"></a>
+                        <a data-role=button id = "atfilter" href="#at"><img src="at-sign.png" height="100" width="100"></a>
+                        <a data-role=button id = "locfilter" href="#loc"><img src="ampersand.png" height="100" width="100"></a>
                     </div> 
                 </div>
                 <div class="ui-block-b">
-                    <fieldset id=sortcontrols data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <a id=usersort sortby=user data-role="button" data-inline="true">username</a>
-                        <a id=locationsort sortby=location data-role="button" data-inline="true">geo-location</a>
-                        <a id=datesort sortby=date data-role="button" data-inline="true">date</a>
-                    </fieldset>
+                    <div id=sortcontrols data-role="controlgroup" data-type="horizontal" data-mini="true">
+                        <a class=sortbutton id=usersort sortby=user data-role="button" data-inline="true">username</a>
+                        <a class=sortbutton id=locationsort sortby=location data-role="button" data-inline="true">geo-location</a>
+                        <a class=sortbutton id=datesort sortby=date data-role="button" data-inline="true">date</a>
+                    </div>
                     <ul data-role="listview" data-inset="true">
                         <li><a href="#">
                             <p id="listfaves"></p>
@@ -78,3 +82,4 @@
         </div>
     </div>
 </body>
+</html>

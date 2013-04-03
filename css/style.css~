@@ -1,13 +1,28 @@
-
-@media all and (max-width: 50em) {
-	.my-breakpoint .ui-block-a, 
+@media all and (max-width: 60em) {
+	.my-breakpoint .ui-block-a {
+        width:20%;
+        
+    } 
 	.my-breakpoint .ui-block-b { 
 		width:100%; 
-		float:none; 
-                position:relative;
+		float:left; 
+        position:left;
 	}
+}
+
+@media all and (min-width: 61em) {
+	.my-breakpoint .ui-block-a {
+        width:10em;
+        
+    } 
+    
+}
+
+.sortbutton {
+    width:5em;
 }
 
 .override-ui-screen-hidden {
   display:block !important;   
 }
+
