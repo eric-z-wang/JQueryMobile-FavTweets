@@ -96,8 +96,8 @@ function generate_hashes(hashtags) {
   list_root=$('#hashList');
   list_root.empty();
   
+  var current;
   var hash;
-  
   
   for (var i=0; i<hashtags.length; i++) {
 	markup = [];
@@ -107,32 +107,13 @@ function generate_hashes(hashtags) {
 	markup.push(hash);
 	markup.push("</a></li>");
 	
-	list_root.append(markup.join(''));
-	console.log(hash);
+	current = $(markup.join(''));
+	current.appendTo(list_root);
 	
-	
-	list_root.children().click(function() {
+	current.click(function() {
 		filter_hashes([$(this).attr("hashID")]);
 	});
   }
-}
-
-
-function generate_ats(ats) {
-  console.log("Generating ats.");
-  list_root=$('#atList');
-  list_root.empty();
-  
-  markup = [];
-  
-  for (var i=0; i<ats.length; i++) {
-	markup.push("<li><a href='index.html'>");
-	markup.push(ats[i]);
-	markup.push("</a></li>");
-  }
-  
-  list_root.append(markup.join('')); 
-  return markup;
 }
 
 function generate_locations(locations) {
@@ -140,14 +121,50 @@ function generate_locations(locations) {
   list_root=$('#locList');
   list_root.empty();
   
-  markup = [];
+  var current;
+  var location;
   
   for (var i=0; i<locations.length; i++) {
-	markup.push("<li><a href='index.html'>");
-	markup.push(locations[i]);
+	markup = [];
+	location = locations[i];
+	
+	markup.push("<li locationID=", location, "><a href='index.html'>");
+	markup.push(location);
 	markup.push("</a></li>");
+	
+	current = $(markup.join(''));
+	current.appendTo(list_root); 
+	
+	current.click(function() {
+	  filter_locations([$(this).attr("locationID")]);
+	});
   }
+}
+
+function generate_ats(users) {
+  console.log("Generating ats.");
+  list_root=$('#atList');
+  list_root.empty();
   
-  list_root.append(markup.join('')); 
-  return markup;
+  var current;
+  var id;
+  var name;
+  
+  for (var i=0; i<users.length-1; i++) {
+	markup = [];
+	
+	id = users[i][0]
+	name = users[i][1]
+	
+	markup.push("<li atID=", id, "><a href='index.html'>");
+	markup.push(name);
+	markup.push("</a></li>");
+	
+	current = $(markup.join(''));
+	current.appendTo(list_root); 
+	
+	current.click(function() {
+	  filter_ats([$(this).attr("atID")]);
+	});
+  }
 }
