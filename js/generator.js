@@ -19,7 +19,7 @@ function tweet_summary_markup(json) {
         username=val['user']['name'];
 
         // Build up the html markup:
-        markup = ["<li class=tweet id=", id, "><a>"];
+        markup = ["<li class='ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c' id=", id, ">"];
         markup.push("<p>");
         markup.push(text);
         markup.push("</p>");
@@ -29,12 +29,7 @@ function tweet_summary_markup(json) {
         markup.push("<h2>");
         markup.push(username);
         markup.push("</h2>");
-        markup.push("<li class=tweettext>");
-        markup.push(text);
-        markup.push("</li>");
-        markup.push("</div>");
-        markup.push("</div>");
-        markup.push("</li>");
+        markup.push("</a></li>");
         list_root.append(markup.join(''));         
     });
 
